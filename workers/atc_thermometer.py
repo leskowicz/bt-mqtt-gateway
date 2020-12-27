@@ -133,11 +133,12 @@ class Atc_ThermometerWorker(BaseWorker):
             "pl_avail": self.available_payload,
             "pl_not_avail": self.unavailable_payload,
             "device":{
-                "identifiers":key,
-                "name":properName,
-                "mf":"Xiaomi",
-                "mdl":"LYWSD03MMC",
-                "sw":"1.0"
+                "identifiers": key,
+                "name": properName,
+                "mf": "Xiaomi",
+                "mdl": "LYWSD03MMC",
+                "sw": "1.0.1",
+                "connections": "[[\"mac\", \"01:02:03:04:05:06\"]]"
                   },
             "device_class": deviceClass,
             "name": properName + " " + fieldName.capitalize(),
