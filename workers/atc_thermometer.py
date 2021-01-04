@@ -121,6 +121,12 @@ class Atc_ThermometerWorker(BaseWorker):
                         payload=payload,
                     )
                 )
+                messages.append(
+                    MqttMessage(
+                        topic=self.format_topic("{}/LWT".format(name)),
+                        payload=self.available_payload
+                    )
+                )
         return messages
 
 
