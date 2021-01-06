@@ -60,6 +60,7 @@ class AtcThermometerStatus:
             MqttMessage(
                 topic=self.worker.format_topic("{}/LWT".format(self.name)),
                     payload=self.payload(),
+                    retain=True
                 )
             )
         return messages
@@ -119,12 +120,14 @@ class Atc_ThermometerWorker(BaseWorker):
                     MqttMessage(
                         topic=self.format_topic("{}/state".format(name)),
                         payload=payload,
+                        retain=True
                     )
                 )
                 messages.append(
                     MqttMessage(
                         topic=self.format_topic("{}/LWT".format(name)),
-                        payload=self.available_payload
+                        payload=self.available_payload,
+                        retain=True
                     )
                 )
         return messages
@@ -164,6 +167,7 @@ class Atc_ThermometerWorker(BaseWorker):
                     MqttMessage(
                         topic=self.format_topic("{}/temperature/config".format(name)),
                         payload=tempConfig,
+                        retain=True
                     )
                 )
 
@@ -172,6 +176,7 @@ class Atc_ThermometerWorker(BaseWorker):
                     MqttMessage(
                         topic=self.format_topic("{}/humidity/config".format(name)),
                         payload=humConfig,
+                        retain=True
                     )
                 )
 
@@ -181,6 +186,7 @@ class Atc_ThermometerWorker(BaseWorker):
                     MqttMessage(
                         topic=self.format_topic("{}/battery/config".format(name)),
                         payload=batteryConfig,
+                        retain=True
                     )
                 )
 
@@ -189,7 +195,8 @@ class Atc_ThermometerWorker(BaseWorker):
             messages.append(
                     MqttMessage(
                         topic=self.format_topic("{}/rssi/config".format(name)),
-                        payload=rssiConfig
+                        payload=rssiConfig,
+                        retain=True
                     )
                 )
 
